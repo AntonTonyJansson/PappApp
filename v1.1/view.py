@@ -3,7 +3,8 @@ from tkinter import *
 import glob, os
 import tkinter
 
-os.chdir("C:/Users/herman/PycharmProjects/language/")
+path = "C:/Users/anton/Documents/Python/PappApp/v1.1"
+os.chdir(path)
 
 
 def start():

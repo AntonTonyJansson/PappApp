@@ -1,3 +1,5 @@
+path = "C:/Users/anton/Documents/Python/PappApp/v1.1"
+
 def chooseOption():
     print("Välj ett av följande alternativ: \n\n 1. Skapa ordlista \n 2. Radera ordlista \n 3. "
           "Redigera ordlista \n 4. Testa dina kunskaper\n 5. Avsluta \n")
@@ -61,7 +63,7 @@ def printOutWords(name):
 
 def deleteDB():
     import glob, os
-    os.chdir("C:/Users/herman/PycharmProjects/language/")
+    os.chdir(path)
     deleteWords = input('Vill du radera någon ordlista?\n')
     if deleteWords.lower() == 'ja':
         specifyWordlist = input('Vilken ordlista vill du radera?\n')
@@ -112,7 +114,7 @@ def showExistingDB():
     if showDatabase.lower() == 'ja':
         print('Detta är dina ordlistor du sparat hittills:\n')
         import glob, os
-        os.chdir("C:/Users/herman/PycharmProjects/language/")
+        os.chdir(path)
         for file in glob.glob("*.txt"):
             file = file[:-4]
             print(file)
