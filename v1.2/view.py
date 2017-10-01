@@ -11,7 +11,7 @@ def start():
     top = tkinter.Tk()
     top.state('zoomed')
     top.title("Lär dig italienska")
-    B = tkinter.Button(top, text="Testa dina kunskaper", command=test,  width=20, height=2, bd=10, font=('Helvetica', '20'))
+    B = tkinter.Button(top, text="Testa dina kunskaper", command=test_list,  width=20, height=2, bd=10, font=('Helvetica', '20'))
     C = tkinter.Button(top, text="Skapa ordlista", command=create_list,  width=20, height=2, bd=10, font=('Helvetica', '20'))
     D = tkinter.Button(top, text="Radera ordlista", command=delete_list,  width=20, height=2, bd=10, font=('Helvetica', '20'))
     E = tkinter.Button(top, text="Redigera ordlista", command=edit_list,  width=20, height=2, bd=10, font=('Helvetica', '20'))
@@ -94,7 +94,7 @@ def delete_list():
     top.mainloop()
 
 
-def remove_file(name,l):
+def remove_file(name, l):
     os.remove(name)
     l.delete(ACTIVE)
 
@@ -103,9 +103,7 @@ def edit_list():
     top = tkinter.Tk()
     top.state('zoomed')
     top.title("Detta är dina ordlistor du sparat hittills")
-    lb1 = Listbox(top, width=34, height=10, bd=10, font=('Helvetica', '30'))
-    for file in glob.glob("*.txt"):
-        lb1.insert(END, file)
+    lb1 = generate_listbox(top)
     lb1.pack()
     a = Button(top, text="Add words", command=lambda lb=lb1: add_words(lb.get(ACTIVE)),
                width=32, height=3, bd=10, font=('Helvetica', '30'))
@@ -114,6 +112,13 @@ def edit_list():
                width=32, height=3, bd=10, font=('Helvetica', '30'))
     r.pack()
     top.mainloop()
+
+
+def generate_listbox(top):
+    lb1 = Listbox(top, width=34, height=10, bd=10, font=('Helvetica', '30'))
+    for file in glob.glob("*.txt"):
+        lb1.insert(END, file)
+    return lb1
 
 
 def delete_words(name):
@@ -125,7 +130,7 @@ def delete_words(name):
     l = f.readlines()
     f.close()
     for line in l:
-        lb1.insert(END,line)
+        lb1.insert(END, line)
     lb1.pack()
     b = Button(top, text="Delete", command=lambda lb=lb1: remove_word(name, lb, l, lb.get(ACTIVE)),
                width=32, height=3, bd=10, font=('Helvetica', '30'))
@@ -142,4 +147,7 @@ def remove_word(name, lb, l, word):
     f.close()
     lb.delete(ACTIVE)
 
+
+def test_list():
+    print('Här finns det inget än')
 
