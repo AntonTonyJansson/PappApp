@@ -79,7 +79,6 @@ def write_word(name, i, s, e1, e2):
     f.close()
 
 
-
 def delete_list():
     top = tkinter.Tk()
     top.state('zoomed')
@@ -125,7 +124,7 @@ def delete_words(name):
     top = tkinter.Tk()
     top.state('zoomed')
     top.title("Detta är dina ord du sparat hittills")
-    lb1 = Listbox(top, width=34, height=20, bd=10, font=('Helvetica', '30'))
+    lb1 = Listbox(top, width=34, height=10, bd=10, font=('Helvetica', '30'))
     f = open(name, 'r')
     l = f.readlines()
     f.close()
@@ -149,5 +148,53 @@ def remove_word(name, lb, l, word):
 
 
 def test_list():
-    print('Här finns det inget än')
+    top = tkinter.Tk()
+    top.state('zoomed')
+    top.title("Detta är dina ordlistor du sparat hittills")
+    lb2 = generate_listbox(top)
+    lb2.pack()
+    k = 0
+    a = Button(top, text="Test list", command=lambda lb=lb2: test_words_ita_2_swe(lb.get(ACTIVE), k),
+               width=32, height=3, bd=10, font=('Helvetica', '30'))
+    a.pack()
+
+
+def test_words_ita_2_swe(name, k):
+    top = Tk()
+    top.state('zoomed')
+    top.title("Ord")
+    lines = []
+    constantWords = open(name, 'rt')
+    for line in constantWords:
+        lines.append(line)
+        print(k)
+    print(lines[k])
+    L1 = Label(top, text="Ord på italienska: "+lines[k], width=20, height=2, bd=10, font=('Helvetica', '20'))
+    L1.pack()
+    L2 = Label(top, text="Ord på svenska:", width=20, height=2, bd=10, font=('Helvetica', '20'))
+    L2.pack()
+    E2 = Entry(top, width=20, bd=10, font=('Helvetica', '20'))
+    E2.pack()
+    b = Button(top, text="Submit", command=lambda e2=E2: check_if_right(e2.get(), k, lines[k+1], name),
+               width=20, height=2, bd=10, font=('Helvetica', '20'))
+    b.pack()
+    c = Button(top, text="Exit", command=lambda t=top: exit_window(t),
+               width=20, height=2, bd=10, font=('Helvetica', '20'))
+    c.pack()
+    top.mainloop()
+
+
+def check_if_right(swe, k2, swecorrect, name):
+    k2 += 2
+    print(k2)
+    top = Tk()
+    top.state('zoomed')
+    top.title("Var det rätt?")
+    L1 = Label(top, text=swe + " trodde du och ", width=20, height=2, bd=10, font=('Helvetica', '20'))
+    L1.pack()
+    L2 = Label(top, text=swecorrect + " var det rätta!", width=20, height=2, bd=10, font=('Helvetica', '20'))
+    L2.pack()
+    B = Button(top, text="Testa dina kunskaper", command=lambda k=k2: test_words_ita_2_swe(name, k),  width=20, height=2, bd=10, font=('Helvetica', '20'))
+    B.pack()
+    top.mainloop()
 
