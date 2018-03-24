@@ -175,13 +175,14 @@ def test_words_ita_2_swe(name, k):
     L2.pack()
     E2 = Entry(top, width=20, bd=10, font=('Helvetica', '20'))
     E2.pack()
-    b = Button(top, text="Submit", command=lambda e2=E2: check_if_right(e2.get(), k, lines[k+1], name),
+    b = Button(top, text="Submit", command=lambda e2=E2, t=top: combine_mods(check_if_right(e2.get(), k, lines[k+1], name), t.destroy()),
                width=20, height=2, bd=10, font=('Helvetica', '20'))
     b.pack()
     c = Button(top, text="Exit", command=lambda t=top: exit_window(t),
                width=20, height=2, bd=10, font=('Helvetica', '20'))
     c.pack()
     top.mainloop()
+
 
 
 def check_if_right(swe, k2, swecorrect, name):
@@ -194,7 +195,10 @@ def check_if_right(swe, k2, swecorrect, name):
     L1.pack()
     L2 = Label(top, text=swecorrect + " var det rätta!", width=20, height=2, bd=10, font=('Helvetica', '20'))
     L2.pack()
-    B = Button(top, text="Testa dina kunskaper", command=lambda k=k2: test_words_ita_2_swe(name, k),  width=20, height=2, bd=10, font=('Helvetica', '20'))
+    B = Button(top, text="Testa dina kunskaper", command=lambda k=k2, t=top: combine_mods(t.destroy(), test_words_ita_2_swe(name, k)),  width=20, height=2, bd=10, font=('Helvetica', '20'))
     B.pack()
     top.mainloop()
 
+
+def combine_mods(mod1, mod2):
+    print('anton har rätt')
