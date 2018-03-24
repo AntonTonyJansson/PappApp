@@ -1,3 +1,7 @@
-Testing
-Re-do
-Hermans ändring
+- Undersöka lösningar på synonymer
+- Designer, sketcher på hur appen ska se ut
+- Komma fram till hur vi ska generera ord till databas
+- Fråga pappa vad han kan tänkas vilja ha i en app
+- Lista delfunktioner till Worlist Editor
+- Lista delfunkioner till Word Editor
+- 
