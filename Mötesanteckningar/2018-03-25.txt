@@ -1,0 +1,10 @@
+DoB
+
+Skapa, radera, modifiera innehåll i ordlistor
+Skapa, radera, modifiera ordlistor
+Testa kunskaper
+- Matcha ord, italienska - svenska
+- Få feedback på rätt och fel, någon slags ratio
+
+
+Skissade design för minimum-appar
